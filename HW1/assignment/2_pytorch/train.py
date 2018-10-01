@@ -172,7 +172,11 @@ def train(epoch):
                 epoch, examples_this_epoch, len(train_loader.dataset),
                 epoch_progress, train_loss, val_loss, val_acc))
     val_loss, val_acc = evaluate('val')
-    is_best = val_acc > best_val_acc
+    global best_val_acc
+    is_best = False
+    if val_acc > best_val_acc:
+        is_best = True
+        best_val_acc = val_acc
     save_checkpoint({
             'epoch': epoch + 1,
             'state_dict': model.state_dict(),

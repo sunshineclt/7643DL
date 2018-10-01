@@ -102,18 +102,6 @@ elif args.model == 'convnet':
 elif args.model == 'mymodel':
     model = models.mymodel.MyModel(im_size, args.hidden_dim,
                                args.kernel_size, n_classes)
-    if args.resume:
-        if os.path.isfile(args.resume):
-            print("=> loading checkpoint '{}'".format(args.resume))
-            checkpoint = torch.load(args.resume)
-            start_epoch = checkpoint['epoch']
-            best_prec1 = checkpoint['best_prec1']
-            model.load_state_dict(checkpoint['state_dict'])
-            optimizer.load_state_dict(checkpoint['optimizer'])
-            print("=> loaded checkpoint '{}' (epoch {})"
-                  .format(args.resume, checkpoint['epoch']))
-        else:
-            print("=> no checkpoint found at '{}'".format(args.resume))
 else:
     raise Exception('Unknown model {}'.format(args.model))
 # cross-entropy loss function
@@ -136,6 +124,19 @@ optimizer = optim.SGD(model.parameters(), lr=args.lr, momentum=args.momentum, we
 #############################################################################
 #                             END OF YOUR CODE                              #
 #############################################################################
+
+if args.resume:
+    if os.path.isfile(args.resume):
+        print("=> loading checkpoint '{}'".format(args.resume))
+        checkpoint = torch.load(args.resume)
+        start_epoch = checkpoint['epoch']
+        best_prec1 = checkpoint['best_prec1']
+        model.load_state_dict(checkpoint['state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer'])
+        print("=> loaded checkpoint '{}' (epoch {})"
+              .format(args.resume, checkpoint['epoch']))
+    else:
+        print("=> no checkpoint found at '{}'".format(args.resume))
 
 def train(epoch):
     '''

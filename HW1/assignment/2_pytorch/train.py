@@ -122,8 +122,10 @@ if args.cuda:
     
 def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
     torch.save(state, filename)
+    print("model saved. ")
     if is_best:
         shutil.copyfile(filename, 'model_best.pth.tar')
+        print("Best model updated: new best val accuracy: {}" % (best_val_acc))
 
 #############################################################################
 # TODO: Initialize an optimizer from the torch.optim package using the

@@ -75,11 +75,11 @@ class MyModel(nn.Module):
         # TODO: Implement the forward pass.
         #############################################################################
         images = self.activations(self.conv1_1(images))
-        images = self.activations(self.conv1_2_bn(self.conv1_2(images))）
+        images = self.activations(self.conv1_2_bn(self.conv1_2(images)))
         images = F.max_pool2d(images, (2,2))
 
         images = self.activations(self.conv2_1(images))
-        images = self.activations(self.conv2_2_bn(self.conv2_2(images))）
+        images = self.activations(self.conv2_2_bn(self.conv2_2(images)))
         images = F.max_pool2d(images, (2,2))
 
         images = self.activations(self.conv3_1(images))

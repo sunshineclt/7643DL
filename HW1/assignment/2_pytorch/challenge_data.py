@@ -15,7 +15,7 @@ else:
     import pickle
 
 import torch.utils.data as data
-import urllib.request
+import urllib
 
 class ChallengeData(data.Dataset):
     """`CIFAR10 <https://www.cs.toronto.edu/~kriz/cifar.html>`_ Dataset.
@@ -69,5 +69,5 @@ class ChallengeData(data.Dataset):
         root = self.root
         if not os.path.exists(os.path.join(root, self.filename)):
             print("Downloading data...")
-            urllib.request.urlretrieve(self.url, os.path.join(root, self.filename))
+            urllib.urlretrieve(self.url, os.path.join(root, self.filename))
             print("Download complete")

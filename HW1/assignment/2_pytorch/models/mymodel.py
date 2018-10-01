@@ -29,6 +29,7 @@ class MyModel(nn.Module):
         #############################################################################
         self.features = self._make_layers(cfg["VGG19"])
         self.classifier = nn.Linear(512, 10)
+        self.dropout = nn.Dropout(p=0.2)
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################
@@ -55,6 +56,7 @@ class MyModel(nn.Module):
         #############################################################################
         scores = self.features(images)
         scores = scores.view(-1, self.num_flat_features(scores))
+        scores = self.dropout(scores)
         scores = self.classifier(scores)
         #############################################################################
         #                             END OF YOUR CODE                              #

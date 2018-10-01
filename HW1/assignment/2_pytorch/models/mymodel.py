@@ -23,13 +23,16 @@ class MyModel(nn.Module):
         # 3, 32, 32
         self.conv1_1 = nn.Conv2d(channels, 64, kernel_size=3, padding=1)
         self.conv1_2 = nn.Conv2d(64, 64, kernel_size=3, padding=1)
+        self.conv1_2_bn = nn.BatchNorm2d(64)
         # 64, 16, 16
         self.conv2_1 = nn.Conv2d(64, 128, kernel_size=3, padding=1)
         self.conv2_2 = nn.Conv2d(128, 128, kernel_size=3, padding=1)
+        self.conv2_2_bn = nn.BatchNorm2d(128)
         # 128, 8, 8
         self.conv3_1 = nn.Conv2d(128, 256, kernel_size=3, padding=1)
         self.conv3_2 = nn.Conv2d(256, 256, kernel_size=3, padding=1)
         self.conv3_3 = nn.Conv2d(256, 256, kernel_size=3, padding=1)
+        self.conv3_3_bn = nn.BatchNorm2d(256)
         # 256, 4, 4
         # self.conv4_1 = nn.Conv2d(256, 512, kernel_size=3, padding=1)
         # self.conv4_2 = nn.Conv2d(512, 512, kernel_size=3, padding=1)
@@ -40,7 +43,9 @@ class MyModel(nn.Module):
         # self.conv5_3 = nn.Conv2d(512, 512, kernel_size=3, padding=1)
         # # 512, 1, 1
         self.fc1 = nn.Linear(int(256*(height/2**3)*(width/2**3)), 4096)
+        self.fc1_bn = nn.BatchNorm1d(4096)
         self.fc2 = nn.Linear(4096, 4096)
+        self.fc2_bn = nn.BatchNorm1d(4096)
         # 4096
         self.fc3 = nn.Linear(4096, 10)
 
@@ -70,16 +75,16 @@ class MyModel(nn.Module):
         # TODO: Implement the forward pass.
         #############################################################################
         images = self.activations(self.conv1_1(images))
-        images = self.activations(self.conv1_2(images))
+        images = self.activations(self.conv1_2_bn(self.conv1_2(images))）
         images = F.max_pool2d(images, (2,2))
 
         images = self.activations(self.conv2_1(images))
-        images = self.activations(self.conv2_2(images))
+        images = self.activations(self.conv2_2_bn(self.conv2_2(images))）
         images = F.max_pool2d(images, (2,2))
 
         images = self.activations(self.conv3_1(images))
         images = self.activations(self.conv3_2(images))
-        images = self.activations(self.conv3_3(images))
+        images = self.activations(self.conv3_3_bn(self.conv3_3(images))
         images = F.max_pool2d(images, (2,2))
 
         # images = self.activations(self.conv4_1(images))
@@ -94,9 +99,9 @@ class MyModel(nn.Module):
 
         images = images.view(images.size(0), -1)
 
-        images = self.activations(self.fc1(images))
+        images = self.activations(self.fc1_bn(self.fc1(images)))
         images = F.dropout(images, training=self.training)
-        images = self.activations(self.fc2(images))
+        images = self.activations(self.fc2_bn(self.fc2(images)))
         images = F.dropout(images, training=self.training)
         scores = self.fc3(images)
         #############################################################################

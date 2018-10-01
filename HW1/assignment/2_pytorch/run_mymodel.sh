@@ -6,7 +6,7 @@
 #############################################################################
 python -u train.py \
     --model mymodel \
-    --epochs 10 \
+    --epochs 20 \
     --weight-decay 0.0 \
     --momentum 0.9 \
     --batch-size 128 \

@@ -84,7 +84,7 @@ class MyModel(nn.Module):
 
         images = self.activations(self.conv3_1(images))
         images = self.activations(self.conv3_2(images))
-        images = self.activations(self.conv3_3_bn(self.conv3_3(images))
+        images = self.activations(self.conv3_3_bn(self.conv3_3(images)))
         images = F.max_pool2d(images, (2,2))
 
         # images = self.activations(self.conv4_1(images))

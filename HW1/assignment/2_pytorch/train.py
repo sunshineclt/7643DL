@@ -109,9 +109,9 @@ criterion = F.cross_entropy
 if args.cuda:
     model.cuda()
     
-def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
+def save_checkpoint(state, is_best, val_acc, filename='checkpoint.pth.tar'):
     torch.save(state, filename)
-    print("model saved. ")
+    print("model saved, accuracy is %f" % (val_acc))
     if is_best:
         shutil.copyfile(filename, 'model_best.pth.tar')
         print("Best model updated: new best val accuracy: %f" % (best_val_acc))
@@ -184,7 +184,7 @@ def train(epoch):
             'state_dict': model.state_dict(),
             'best_prec1': best_val_acc,
             'optimizer' : optimizer.state_dict(),
-        }, is_best)
+        }, is_best, val_acc)
 
 def evaluate(split, verbose=False, n_batches=None):
     '''

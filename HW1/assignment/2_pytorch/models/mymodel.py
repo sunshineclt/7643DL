@@ -27,7 +27,7 @@ class MyModel(nn.Module):
         #############################################################################
         # TODO: Initialize anything you need for the forward pass
         #############################################################################
-        self.features = self._make_layers(cfg["VGG13"])
+        self.features = self._make_layers(cfg["VGG19"])
         self.classifier = nn.Linear(512, 10)
         #############################################################################
         #                             END OF YOUR CODE                              #

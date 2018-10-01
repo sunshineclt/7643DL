@@ -7,10 +7,10 @@
 python -u train.py \
     --model mymodel \
     --epochs 20 \
-    --weight-decay 0.0 \
+    --weight-decay 0.005 \
     --momentum 0.9 \
     --batch-size 128 \
-    --lr 0.01 | tee mymodel.log
+    --lr 0.1 | tee mymodel.log
 #############################################################################
 #                             END OF YOUR CODE                              #
 #############################################################################

@@ -33,6 +33,7 @@ parser.add_argument('--epochs', type=int, metavar='N',
 parser.add_argument('--model',
                     choices=['softmax', 'convnet', 'twolayernn', 'mymodel'],
                     help='which model to train/evaluate')
+parser.add_argument("--resume", default=False, help='resume model path')
 parser.add_argument('--hidden-dim', type=int,
                     help='number of hidden features/activations')
 parser.add_argument('--kernel-size', type=int,
@@ -87,6 +88,8 @@ test_loader = torch.utils.data.DataLoader(test_dataset,
                  batch_size=args.batch_size, shuffle=True, **kwargs)
 
 # Load the model
+best_prec1 = 0
+start_epoch = 0
 if args.model == 'softmax':
     model = models.softmax.Softmax(im_size, n_classes)
 elif args.model == 'twolayernn':
@@ -97,12 +100,29 @@ elif args.model == 'convnet':
 elif args.model == 'mymodel':
     model = models.mymodel.MyModel(im_size, args.hidden_dim,
                                args.kernel_size, n_classes)
+    if args.resume:
+        if os.path.isfile(args.resume):
+            print("=> loading checkpoint '{}'".format(args.resume))
+            checkpoint = torch.load(args.resume)
+            start_epoch = checkpoint['epoch']
+            best_prec1 = checkpoint['best_prec1']
+            model.load_state_dict(checkpoint['state_dict'])
+            optimizer.load_state_dict(checkpoint['optimizer'])
+            print("=> loaded checkpoint '{}' (epoch {})"
+                  .format(args.resume, checkpoint['epoch']))
+        else:
+            print("=> no checkpoint found at '{}'".format(args.resume))
 else:
     raise Exception('Unknown model {}'.format(args.model))
 # cross-entropy loss function
 criterion = F.cross_entropy
 if args.cuda:
     model.cuda()
+    
+def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
+    torch.save(state, filename)
+    if is_best:
+        shutil.copyfile(filename, 'model_best.pth.tar')
 
 #############################################################################
 # TODO: Initialize an optimizer from the torch.optim package using the
@@ -148,6 +168,14 @@ def train(epoch):
                   'Train Loss: {:.6f}\tVal Loss: {:.6f}\tVal Acc: {}'.format(
                 epoch, examples_this_epoch, len(train_loader.dataset),
                 epoch_progress, train_loss, val_loss, val_acc))
+    val_loss, val_acc = evaluate('val')
+    is_best = val_acc > best_val_acc
+    save_checkpoint({
+            'epoch': epoch + 1,
+            'state_dict': model.state_dict(),
+            'best_prec1': best_val_acc,
+            'optimizer' : optimizer.state_dict(),
+        }, is_best)
 
 def evaluate(split, verbose=False, n_batches=None):
     '''
@@ -185,7 +213,8 @@ def evaluate(split, verbose=False, n_batches=None):
 
 # train the model one epoch at a time
 print("Training start...")
-for epoch in range(1, args.epochs + 1):
+best_val_acc = best_prec1
+for epoch in range(start_epoch, args.epochs + 1):
     train(epoch)
 evaluate('test', verbose=True)
 

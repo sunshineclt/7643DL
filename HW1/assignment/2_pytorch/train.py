@@ -11,6 +11,7 @@ from torchvision import transforms
 from torch.autograd import Variable
 from cifar10 import CIFAR10
 import shutil
+import os
 
 # You should implement these (softmax.py, twolayernn.py, convnet.py)
 import models.softmax 

@@ -29,7 +29,7 @@ class MyModel(nn.Module):
         #############################################################################
         self.dropout = nn.Dropout(p=0.5)
         self.features = self._make_layers(cfg["VGG_my"])
-        self.classifier = nn.Linear(8192, 10)
+        self.classifier = nn.Linear(4096, 10)
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################

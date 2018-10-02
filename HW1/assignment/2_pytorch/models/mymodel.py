@@ -27,9 +27,9 @@ class MyModel(nn.Module):
         #############################################################################
         # TODO: Initialize anything you need for the forward pass
         #############################################################################
+        self.dropout = nn.Dropout(p=0.25)
         self.features = self._make_layers(cfg["VGG19"])
         self.classifier = nn.Linear(512, 10)
-        self.dropout = nn.Dropout(p=0.2)
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################
@@ -67,7 +67,8 @@ class MyModel(nn.Module):
         in_channels = 3
         for x in cfg:
             if x == 'M':
-                layers += [nn.MaxPool2d(kernel_size=2, stride=2)]
+                layers += [nn.MaxPool2d(kernel_size=2, stride=2),
+                           nn.Dropout(p=0.25)]
             else:
                 layers += [nn.Conv2d(in_channels, x, kernel_size=3, padding=1),
                            nn.BatchNorm2d(x),

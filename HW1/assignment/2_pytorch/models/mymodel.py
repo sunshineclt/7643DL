@@ -28,7 +28,7 @@ class MyModel(nn.Module):
         # TODO: Initialize anything you need for the forward pass
         #############################################################################
         self.dropout = nn.Dropout(p=0.25)
-        self.features = self._make_layers(cfg["VGG19"])
+        self.features = self._make_layers(cfg["VGG13"])
         self.classifier = nn.Linear(512, 10)
         #############################################################################
         #                             END OF YOUR CODE                              #

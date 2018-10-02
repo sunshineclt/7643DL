@@ -129,11 +129,13 @@ class CIFAR10(data.Dataset):
         # to return a PIL Image
         img = Image.fromarray(img)
 
-        if self.transform is not None:
-            img = self.transform(img)
         if self.split == 'train':
             img = transforms.RandomCrop(32, padding=4)(img)
             img = transforms.RandomHorizontalFlip()(img)
+        
+        if self.transform is not None:
+            img = self.transform(img)
+
         if self.target_transform is not None:
             target = self.target_transform(target)
         return img, target

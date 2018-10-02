@@ -68,7 +68,7 @@ class MyModel(nn.Module):
         for x in cfg:
             if x == 'M':
                 layers += [nn.MaxPool2d(kernel_size=2, stride=2),
-                           nn.Dropout(p=0.25)]
+                           nn.Dropout2d(p=0.25)]
             else:
                 layers += [nn.Conv2d(in_channels, x, kernel_size=3, padding=1),
                            nn.BatchNorm2d(x),

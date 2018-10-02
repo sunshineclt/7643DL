@@ -176,7 +176,7 @@ def train(epoch):
     val_loss, val_acc = evaluate('val')
     global best_val_acc
     is_best = False
-    if val_acc > best_val_acc:
+    if val_acc >= best_val_acc:
         is_best = True
         best_val_acc = val_acc
     save_checkpoint({

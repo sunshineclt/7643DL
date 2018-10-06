@@ -79,8 +79,17 @@ def two_layer_net(X, model, y=None, reg=0.0):
   # TODO: Perform the forward pass, computing the class scores for the input. #
   # Store the result in the scores variable, which should be an array of      #
   # shape (N, C).                                                             #
-  #############################################################################
-  pass
+  #############################################################################  
+  H, C = W2.shape
+  X_ = np.hstack((X, np.ones((N, 1))))
+  W1_ = np.vstack((W1, b1.reshape(1, H)))
+
+  hidden = X_.dot(W1_)
+  relu = np.maximum(hidden, 0)
+  
+  relu_ = np.hstack((relu, np.ones((N, 1))))
+  W2_ = np.vstack((W2, b2.reshape(1, C)))
+  scores = relu_.dot(W2_)
   #############################################################################
   #                              END OF YOUR CODE                             #
   #############################################################################
@@ -98,7 +107,11 @@ def two_layer_net(X, model, y=None, reg=0.0):
   # classifier loss. So that your results match ours, multiply the            #
   # regularization loss by 0.5                                                #
   #############################################################################
-  pass
+  scores = scores - np.amax(scores, axis=1, keepdims=True)
+  exp_scores = np.exp(scores)
+  sum_exp_scores = np.sum(exp_scores, axis=1)
+  loss = - 1.0 / N * np.sum(scores[np.arange(N), y] - np.log(sum_exp_scores)) \
+         + 0.5 * reg * (np.sum(np.square(W1)) + np.sum(np.square(W2)))
   #############################################################################
   #                              END OF YOUR CODE                             #
   #############################################################################
@@ -110,7 +123,21 @@ def two_layer_net(X, model, y=None, reg=0.0):
   # and biases. Store the results in the grads dictionary. For example,       #
   # grads['W1'] should store the gradient on W1, and be a matrix of same size #
   #############################################################################
-  pass
+  probs = exp_scores / sum_exp_scores.reshape(N, 1)
+  probs[np.arange(N), y] -= 1
+  probs /= N
+
+  dW2_ = relu_.T.dot(probs)
+  grads['W2'] = dW2_[:-1] + reg * W2
+  grads['b2'] = dW2_[-1].flatten()
+
+  drelu_ = probs.dot(W2_.T)
+  drelu = drelu_[:, :-1]
+  drelu[relu <= 0] = 0
+
+  dW1_ = X_.T.dot(drelu)
+  grads['W1'] = dW1_[:-1] + reg * W1
+  grads['b1'] = dW1_[-1].flatten()
   #############################################################################
   #                              END OF YOUR CODE                             #
   #############################################################################

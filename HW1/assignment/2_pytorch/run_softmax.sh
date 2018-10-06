@@ -6,10 +6,10 @@
 #############################################################################
 python -u train.py \
     --model softmax \
-    --epochs 1 \
-    --weight-decay 0.0 \
-    --momentum 0.0 \
-    --batch-size 512 \
+    --epochs 10 \
+    --weight-decay 1e-5 \
+    --momentum 0.9 \
+    --batch-size 128 \
     --lr 0.01 | tee softmax.log
 #############################################################################
 #                             END OF YOUR CODE                              #

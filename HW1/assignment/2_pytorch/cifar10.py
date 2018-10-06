@@ -51,13 +51,14 @@ class CIFAR10(data.Dataset):
         ['test_batch', '40351d587109b95175f43aff81a1287e'],
     ]
 
-    def __init__(self, root, split='train',
+    def __init__(self, root, model, split='train', 
                  transform=None, target_transform=None,
                  download=False, val_samples=1000):
         self.root = os.path.expanduser(root)
         self.transform = transform
         self.target_transform = target_transform
         self.split = split # train, val, or test
+        self.model = model
 
         if download:
             self.download()
@@ -129,7 +130,7 @@ class CIFAR10(data.Dataset):
         # to return a PIL Image
         img = Image.fromarray(img)
 
-        if self.split == 'train':
+        if self.split == 'train' and self.model == 'mymodel':
             img = transforms.RandomCrop(32, padding=4)(img)
             img = transforms.RandomHorizontalFlip()(img)
         

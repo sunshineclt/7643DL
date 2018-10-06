@@ -47,17 +47,13 @@ class CNN(nn.Module):
         #############################################################################
         # TODO: Implement the forward pass. This should take few lines of code.
         #############################################################################
-        images = F.max_pool2d(F.leaky_relu(self.conv(images)), (2,2))
-        images = images.view(-1, self.num_flat_features(images))
+        images = F.max_pool2d(F.relu(self.conv(images)), (2, 2))
+        size = 1
+        for i in images.size()[1:]:
+            size *= i
+        images = images.view(-1, size)
         scores = self.fc(images)
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################
         return scores
-
-    def num_flat_features(self, x):
-        size = x.size()[1:]  # all dimensions except the batch dimension
-        num_features = 1
-        for s in size:
-            num_features *= s
-        return num_features

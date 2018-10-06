@@ -18,12 +18,15 @@ class Softmax(nn.Module):
         #############################################################################
         # TODO: Initialize anything you need for the forward pass
         #############################################################################
-        self.fc = nn.Linear(torch.prod(torch.IntTensor(im_size)).item(), n_classes)
-        self.softmax = nn.Softmax()
+        size = 1
+        for i in im_size:
+            size *= i
+        self.fc = nn.Linear(size, n_classes)
+        self.softmax = nn.Softmax(dim=1)
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################
-
+        
     def forward(self, images):
         '''
         Take a batch of images and run them through the classifier to
@@ -45,7 +48,8 @@ class Softmax(nn.Module):
         # TODO: Implement the forward pass. This should take very few lines of code.
         #############################################################################
         images = images.view(images.data.shape[0], -1)
-        scores = self.softmax(self.fc(images))
+        scores = self.fc(images)
+        scores = self.softmax(scores) # Though CrossEntropy loss function by Pytorch should have included softmax, but if we don't apply softmax here, the performance can't be above 30% after many many experiments
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################

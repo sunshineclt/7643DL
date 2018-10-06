@@ -20,7 +20,10 @@ class TwoLayerNN(nn.Module):
         #############################################################################
         # TODO: Initialize anything you need for the forward pass
         #############################################################################
-        self.fc1 = nn.Linear(torch.prod(torch.IntTensor(im_size)).item(), hidden_dim)
+        size = 1
+        for i in im_size:
+            size *= i
+        self.fc1 = nn.Linear(size, hidden_dim)
         self.relu1 = nn.ReLU()
         self.fc2 = nn.Linear(hidden_dim, n_classes)
         self.softmax = nn.Softmax()

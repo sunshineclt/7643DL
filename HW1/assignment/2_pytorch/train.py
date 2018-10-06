@@ -75,11 +75,11 @@ transform = transforms.Compose([
                  transforms.Normalize(cifar10_mean_color, cifar10_std_color),
             ])
 # Datasets
-train_dataset = CIFAR10(args.cifar10_dir, split='train', download=True,
+train_dataset = CIFAR10(args.cifar10_dir, split='train', model=args.model, download=True,
                         transform=transform)
-val_dataset = CIFAR10(args.cifar10_dir, split='val', download=True,
+val_dataset = CIFAR10(args.cifar10_dir, split='val', model=args.model, download=True,
                         transform=transform)
-test_dataset = CIFAR10(args.cifar10_dir, split='test', download=True,
+test_dataset = CIFAR10(args.cifar10_dir, split='test', model=args.model, download=True,
                         transform=transform)
 # DataLoaders
 train_loader = torch.utils.data.DataLoader(train_dataset,
@@ -173,18 +173,19 @@ def train(epoch):
                   'Train Loss: {:.6f}\tVal Loss: {:.6f}\tVal Acc: {}'.format(
                 epoch, examples_this_epoch, len(train_loader.dataset),
                 epoch_progress, train_loss, val_loss, val_acc))
-    val_loss, val_acc = evaluate('val')
-    global best_val_acc
-    is_best = False
-    if val_acc >= best_val_acc:
-        is_best = True
-        best_val_acc = val_acc
-    save_checkpoint({
-            'epoch': epoch + 1,
-            'state_dict': model.state_dict(),
-            'best_prec1': best_val_acc,
-            'optimizer' : optimizer.state_dict(),
-        }, is_best, val_acc)
+    if args.model == 'mymodel':
+        val_loss, val_acc = evaluate('val')
+        global best_val_acc
+        is_best = False
+        if val_acc >= best_val_acc:
+            is_best = True
+            best_val_acc = val_acc
+        save_checkpoint({
+                'epoch': epoch + 1,
+                'state_dict': model.state_dict(),
+                'best_prec1': best_val_acc,
+                'optimizer' : optimizer.state_dict(),
+            }, is_best, val_acc)
 
 def evaluate(split, verbose=False, n_batches=None):
     '''

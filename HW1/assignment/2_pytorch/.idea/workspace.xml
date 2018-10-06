@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d56ee667-d9c7-4715-b3a7-b72c04bd4681" name="Default Changelist" comment="" />
+    <list default="true" id="d56ee667-d9c7-4715-b3a7-b72c04bd4681" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../1_cs231n/convnet.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../1_cs231n/convnet.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1_cs231n/cs231n/classifier_trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../1_cs231n/cs231n/classifier_trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1_cs231n/cs231n/classifiers/neural_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/../1_cs231n/cs231n/classifiers/neural_net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1_cs231n/cs231n/layers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../1_cs231n/cs231n/layers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1_cs231n/layers.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../1_cs231n/layers.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1_cs231n/two_layer_net.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../1_cs231n/two_layer_net.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/softmax-classifier-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/softmax-classifier-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/cifar10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convnet.log" beforeDir="false" afterPath="$PROJECT_DIR$/convnet.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filter-viz.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/filter-viz.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/convnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/convnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/softmax.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/softmax.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/twolayernn.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/twolayernn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mymodel.log" beforeDir="false" afterPath="$PROJECT_DIR$/mymodel.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/predictions.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_convnet.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_convnet.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_softmax.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_softmax.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_twolayernn.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_twolayernn.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/softmax-classifier.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/softmax-classifier.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/softmax.log" beforeDir="false" afterPath="$PROJECT_DIR$/softmax.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/softmax_lossvstrain.png" beforeDir="false" afterPath="$PROJECT_DIR$/softmax_lossvstrain.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/softmax_valaccuracy.png" beforeDir="false" afterPath="$PROJECT_DIR$/softmax_valaccuracy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twolayernn.log" beforeDir="false" afterPath="$PROJECT_DIR$/twolayernn.log" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +40,10 @@
     <session id="-1862167376">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -45,12 +71,12 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="173">
-              <caret line="90" selection-start-line="90" selection-end-line="90" />
+              <caret line="95" column="54" selection-start-line="95" selection-start-column="54" selection-end-line="95" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -58,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/softmax.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+            <state relative-caret-position="532">
+              <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -68,6 +94,9 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -110,6 +139,7 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -194,15 +224,9 @@
     <frame x="-1865" y="-59" width="1865" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2498621" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25317153" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32980973" />
@@ -210,11 +234,17 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +258,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/train.py</url>
-          <line>186</line>
+          <line>224</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -240,13 +270,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///anaconda/envs/pytorch/lib/python2.7/site-packages/torch/nn/modules/linear.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
@@ -254,10 +277,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="95" column="54" selection-start-line="95" selection-start-column="54" selection-end-line="95" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/softmax.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+        <state relative-caret-position="532">
+          <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
